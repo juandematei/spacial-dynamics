@@ -1,49 +1,172 @@
-footer {
-  background-color: $primary-color;
-  color: #FFFFFF;
-  margin-top: 6rem;
-  display: flex;
-  flex-direction: column;
-  
-  .footer-content {
-    width: 1200px;
+// Footer
+.footer {
+  margin: 0 auto;
+  background-color: $primary;
+  color: $neutral-01;
+  font-size: 0.9rem;
+  padding-top: 2rem;
+  display: grid;
+  gap: 2rem 4rem;
+  grid-template-areas:
+    'logo'
+    'contact'
+    'sitemap'
+    'social'
+    'author';
+
+  @media screen and (min-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas:
+      'logo logo'
+      'contact sitemap'
+      'contact social'
+      'author author';
+    gap: 3rem 6rem;
+  }
+
+  h2,
+  h3 {
+    color: $neutral-01;
+  }
+
+  a {
+    text-decoration: underline;
+    text-decoration-style: solid;
+  }
+
+  .contact,
+  .sitemap,
+  .author {
+    padding: 0 20px;
+
+    @media screen and (min-width: 768px) {
+      padding: 0;
+    }
+  }
+
+  .contact,
+  .sitemap {
+    max-width: calc((960px - 4rem) / 2);
+  }
+
+  .logo,
+  .social {
     display: flex;
-    gap: 3rem;
-    padding: 2rem 0;
-    font-size: 0.9rem;
-    align-self: center;
+    justify-content: center;
+  }
 
-    h4 {
-      margin-bottom: 0.5rem;
-    }
+  .logo {
+    grid-area: logo;
 
-    ul {
-      list-style: none;
+    &-img {
+      width: 80px;
+      filter: brightness(0) invert(1);
     }
-    
-    .footer-navigation,
-    .footer-social {
-      flex-grow: 1;
-    }
-    
-    .footer-social {
+  }
+
+  .contact {
+    grid-area: contact;
+    justify-self: end;
+    display: flex;
+    flex-direction: column;
+
+    &-form {
       display: flex;
       flex-direction: column;
-      i {
-        display: inline-block;
-        width: 16px;
-        text-align: center;
-        margin: 0 0.5rem;
-        color: #FFFFFF;
+      margin-top: 1rem;
+      gap: 1rem;
+
+      &__group {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
       }
-      .copyright {
-        margin-top: auto;
+
+      label,
+      input,
+      textarea,
+      button {
+        font-family: $secondary-font;
+        font-size: 1rem;
+        border: none;
+        outline: none;
+        width: 100%;
+      }
+
+      input,
+      textarea,
+      button {
+        border-radius: 4px;
+        padding: 1rem;
+      }
+
+      button {
+        background-color: darken($primary, $amount: 25%);
+        color: $neutral-01;
+        font-size: 1rem;
+        font-weight: 600;
+        letter-spacing: 0.25rem;
+        text-transform: uppercase;
+        cursor: pointer;
       }
     }
   }
 
-  .footer-author {
-    background-color: darken($primary-color, $amount: 50);
+  .sitemap {
+    grid-area: sitemap;
+
+    h4 {
+      font-size: 1rem;
+    }
+    &-links {
+      list-style: none;
+
+      > li {
+        margin-bottom: 0.5rem;
+      }
+    }
+  }
+
+  .social {
+    grid-area: social;
+
+    @media screen and (min-width: 768px) {
+      justify-content: flex-start;
+    }
+
+    &-links {
+      list-style: none;
+      display: inline-flex;
+      gap: 1rem;
+
+      a {
+        background-color: $tertiary;
+        padding: 1rem;
+        border-radius: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: $transition;
+
+        i {
+          color: $primary;
+          font-size: 1.2rem;
+          text-align: center;
+          width: 1.2rem;
+          height: 1.2rem;
+        }
+
+        &:hover {
+          background-color: $neutral-01;
+        }
+      }
+    }
+  }
+
+  .author {
+    grid-area: author;
+    width: 100%;
+    background-color: darken($primary, $amount: 50);
     padding: 2rem 0;
     font-family: $secondary-font;
     display: flex;
@@ -52,9 +175,9 @@ footer {
     flex-direction: column;
     text-transform: uppercase;
     font-size: 0.8rem;
-    line-height: 30px;
+    line-height: 1rem;
 
-    .logo {
+    &-logo {
       background-image: url(https://www.juandematei.com/img/logo-white.png);
       background-size: 30px;
       background-position: 0px;
@@ -63,6 +186,7 @@ footer {
       display: inline-block;
       padding-left: 40px;
       margin-left: 10px;
+      margin-bottom: 8px;
     }
   }
 }

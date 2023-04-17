@@ -1,0 +1,62 @@
+.pages {
+  .title {
+    background-color: $primary;
+    color: $neutral-01;
+    padding: 2rem 20px;
+    font-size: 2rem;
+  }
+
+  .breadcrumb {
+    background-color: lighten($primary, $amount: 40);
+    color: $neutral-10;
+    position: sticky;
+    top: $navbar-height;
+    z-index: 998;
+    margin: 0;
+    padding: 0.5rem 20px;
+    display: none;
+
+    @media screen and (min-width: 768px) {
+      display: block;
+    }
+
+    ol {
+      list-style: none;
+      font-size: 0.9rem;
+      margin: 0 auto;
+      white-space: nowrap;
+      max-width: 960px;
+
+      li {
+        display: inline-block;
+        vertical-align: middle;
+
+        &:nth-child(2) {
+          width: 32px;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+
+          @media screen and (min-width: 768px) {
+            width: auto;
+          }
+        }
+
+        + li:before {
+          margin: 0 4px;
+          content: '/\00a0';
+        }
+
+        a {
+          color: $primary;
+          text-decoration: none;
+
+          &:hover {
+            color: darken($primary, $amount: 10);
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+}
